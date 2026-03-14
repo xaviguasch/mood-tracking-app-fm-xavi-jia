@@ -26,6 +26,10 @@
 }
 
 @theme {
+  --color-trends-background: var(--color-neutral-0);
+  --color-light-grey-text: var(--color-neutral-600);
+  --color-translucid-line: var(--color-blue-100);
+  --color-dark-text: var(--color-neutral-900);
   /* --color-background1: var(--color-white);
   --color-background2: var(--color-neutral-100);
 
@@ -116,6 +120,20 @@ body {
 
   .text-preset-9 {
     @apply font-normal text-[12px] leading-[1.1] tracking-[0px];
+  }
+
+  .scrollbar-horizontal::-webkit-scrollbar {
+    height: 2px; /* scrollbar thickness */
+  }
+
+  .scrollbar-horizontal::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 9999px;
+    min-width: 140px; /* thumb width */
+  }
+
+  .scrollbar-horizontal::-webkit-scrollbar-track {
+    background: var(--color-blue-200);
   }
 }
 
