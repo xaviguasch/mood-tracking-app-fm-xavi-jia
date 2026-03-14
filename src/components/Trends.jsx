@@ -44,14 +44,12 @@ function Trends() {
 
       <div className="">
         <div className="overflow-x-auto">
-          {/* GRID */}
-          <div className="grid grid-cols-[max-content_repeat(30,80px)] gap-y-6 items-center">
+          <div className="grid grid-cols-[max-content_repeat(30,80px)] gap-y-10 items-center">
             {rows.map((row, i) => (
               <>
-                {/* Label */}
                 <div
                   key={row}
-                  className="flex items-center gap-1.5 text-preset-9 text-light-grey-text pr-3"
+                  className="flex items-center gap-1.5 text-preset-9 text-light-grey-text pr-4"
                 >
                   <span>
                     <img className="w-[8.75px] h-2.5" src={sleepIcon}></img>
@@ -59,7 +57,6 @@ function Trends() {
                   {row}
                 </div>
 
-                {/* Grid lines */}
                 {dates.map((_, j) => (
                   <div
                     key={`${i}-${j}`}
@@ -69,18 +66,16 @@ function Trends() {
               </>
             ))}
 
-            {/* Dates row */}
             <div></div>
 
             {dates.map((date, i) => (
-              <div key={i} className="flex flex-col gap-1.5 items-center">
+              <div key={i} className="flex flex-col gap-1.5 items-center pt-4">
                 <p className="text-preset-9 text-light-grey-text">
                   {date.month}
                 </p>
                 <p className="text-preset-8  text-dark-text">{date.day}</p>
               </div>
             ))}
-            {/* Spacer at the bottom */}
           </div>
         </div>
       </div>
