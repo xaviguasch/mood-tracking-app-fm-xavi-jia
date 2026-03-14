@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -66,5 +66,56 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+} */
+
+@import "tailwindcss";
+
+body {
+  background: linear-gradient(to bottom, #f5f5ff 73%, #e0e0ff 100%);
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+@layer utilities {
+  .average-title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .average-title span {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    line-height: 1.4;
+  }
+
+  .average-card {
+    background-color: #e0e6fa;
+    padding: 45px 16px;
+    border-radius: 15px;
+    /* overflow: hidden; */
+    position: relative;
+  }
+
+  .average-bg-pattern {
+    position: absolute;
+    top: -25%;
+    right: -5%;
+  }
+
+  .average-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .average-card p {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
   }
 }
