@@ -30,6 +30,11 @@
   --color-light-grey-text: var(--color-neutral-600);
   --color-translucid-line: var(--color-blue-100);
   --color-dark-text: var(--color-neutral-900);
+  --color-bright-blue-text: var(--color-blue-600);
+  --color-white-text: var(--color-neutral-0);
+
+  --color-bright-blue-btn: var(--color-blue-600);
+
   /* --color-background1: var(--color-white);
   --color-background2: var(--color-neutral-100);
 
@@ -115,7 +120,7 @@ body {
   }
 
   .text-preset-8 {
-    @apply font-semibold text-[12px] leading-[1] tracking-[0px];
+    @apply font-semibold text-[12px] leading-none tracking-[0px];
   }
 
   .text-preset-9 {
