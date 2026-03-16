@@ -6,7 +6,7 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="max-w-[1170px] px-[16px] sm:px-[32px] md:px-[64px] lg:px-[135px] mt-[32px] sm:mt-[40px] mx-auto ">
+    <div className="max-w-292.5 px-4 sm:px-8 md:px-16 lg:px-33.75 mt-8 sm:mt-10 mx-auto ">
       <Header />
       <Averages />
     <div className="pt-8 pb-20 px-4 ">
