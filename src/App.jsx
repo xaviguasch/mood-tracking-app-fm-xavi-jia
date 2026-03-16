@@ -8,10 +8,8 @@ function App() {
   return (
     <div className="max-w-[1170px] px-[16px] sm:px-[32px] md:px-[64px] lg:px-[135px] mt-[32px] sm:mt-[40px] mx-auto ">
       <Header />
-      <Averages />
-    <div className="pt-8 pb-20 px-4 ">
-      <Header />
       <Hero />
+      <Averages />
       <Trends />
     </div>
   );
