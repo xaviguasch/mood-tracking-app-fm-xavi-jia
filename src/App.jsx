@@ -9,10 +9,10 @@ function App() {
     <div className="max-w-292.5 px-4 sm:px-8 md:px-16 lg:px-33.75 mt-8 sm:mt-10 mx-auto ">
       <Header />
       <Averages />
-    <div className="pt-8 pb-20 px-4 ">
-      <Header />
-      <Hero />
-      <Trends />
+      <div className="pt-8 pb-20 px-4 ">
+        <Hero />
+        <Trends />
+      </div>
     </div>
   );
 }
