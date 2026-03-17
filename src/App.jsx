@@ -8,9 +8,9 @@ function App() {
   return (
     <div className="max-w-292.5 px-4 sm:px-8 md:px-16 lg:px-33.75 mt-8 sm:mt-10 mx-auto ">
       <Header />
-      <Averages />
+      <Hero />
       <div className="pt-8 pb-20 px-4 ">
-        <Hero />
+        <Averages />
         <Trends />
       </div>
     </div>

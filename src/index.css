@@ -22,6 +22,8 @@
   --color-green-300: #89e780;
   --color-amber-300: #ffc97c;
 
+  --bg-gradient-modal: linear-gradient(90deg, #f5f5ff 73%, #e0e0ff 100%);
+
   /* --transition: all 0.2s ease; */
 }
 
