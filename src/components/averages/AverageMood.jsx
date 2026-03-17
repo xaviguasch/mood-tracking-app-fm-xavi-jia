@@ -54,7 +54,7 @@ function AverageMood({ last5Entries, previous5Entries }) {
   }
 
   return (
-    <div className="mb-6">
+    <div className="">
       <h2 className="text-preset-5 mb-3">
         Average Mood{" "}
         <span className="text-preset-7 text-light-grey-text">
