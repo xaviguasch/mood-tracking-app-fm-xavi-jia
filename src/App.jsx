@@ -12,7 +12,11 @@ function App() {
     <div className="pt-8 pb-20 px-4 ">
       <Header />
       <Hero />
-      <Trends />
+
+      <div>
+        <Averages />
+        <Trends />
+      </div>
     </div>
   );
 }
