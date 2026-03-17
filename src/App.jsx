@@ -6,11 +6,14 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="max-w-[1170px] px-[16px] sm:px-[32px] md:px-[64px] lg:px-[135px] mt-[32px] sm:mt-[40px] mx-auto ">
+    <div className="max-w-292.5 px-4  md:px-8 lg:px-0 mt-8 mx-auto ">
       <Header />
       <Hero />
-      <Averages />
-      <Trends />
+
+      <div>
+        <Averages />
+        <Trends />
+      </div>
     </div>
   );
 }
