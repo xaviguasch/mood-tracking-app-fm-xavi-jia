@@ -35,11 +35,20 @@
 
   --color-bright-blue-btn: var(--color-blue-600);
 
+  --color-very-light-blue: var(--color-blue-100);
+  --color-super-light-blue: var(--color-blue-200);
+
   --color-light-blue: var(--color-blue-300);
+
+  --color-dark-blue: var(--color-blue-600);
+
   --color-light-green: var(--color-green-300);
   --color-light-amber: var(--color-amber-300);
   --color-light-indigo: var(--color-indigo-200);
   --color-light-red: var(--color-red-300);
+  --color-dark-black: var(--color-neutral-900);
+
+  --color-white-bg: var(--color-neutral-0);
 
   /* --color-background1: var(--color-white);
   --color-background2: var(--color-neutral-100);

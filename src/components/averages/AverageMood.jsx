@@ -64,7 +64,7 @@ function AverageMood({ last5Entries, previous5Entries }) {
 
       <div
         className={`average-card ${
-          last5Entries.length < 5 ? "bg-[var(--color-blue-100)]" : "bg-blue-300"
+          last5Entries.length < 5 ? "bg-(--color-blue-100)" : "bg-blue-300"
         } `}
       >
         {last5Entries.length < 5 ? (

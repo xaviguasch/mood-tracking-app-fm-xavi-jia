@@ -1,4 +1,4 @@
-function Hero() {
+function Hero({ onOpenForm }) {
   return (
     <div className="flex flex-col gap-12 items-center">
       <div className="flex flex-col gap-4 items-center">
@@ -14,7 +14,10 @@ function Hero() {
         </span>
       </div>
 
-      <button className="text-preset-5 text-white-text bg-bright-blue-btn px-8 py-4 rounded-[10px]">
+      <button
+        className="text-preset-5 text-white-text bg-bright-blue-btn px-8 py-4 rounded-[10px]"
+        onClick={onOpenForm}
+      >
         Log today's mood
       </button>
     </div>
