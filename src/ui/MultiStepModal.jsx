@@ -1,44 +1,73 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import MoodStep from "./MoodStep";
+import FeelingStep from "./FeelingStep";
+import DescriptionStep from "./DescriptionStep";
+import SleepHoursStep from "./SleepHoursStep";
+import closeIcon from "../assets/images/icon-close.svg";
 
-const MultiStepModal = forwardRef(function MultiStepModal({}, ref) {
-  const dialogRef = useRef();
-
+function MultiStepModal({ isOpen, onClose }) {
   const [step, setStep] = useState(0);
-
   const [formData, setFormData] = useState({
     mood: null,
     feelings: [],
     description: "",
     sleepHours: null,
   });
-  console.log(formData);
+
+  const [resetKey, setResetKey] = useState(0);
+
+  const dialogRef = useRef();
+
+  useEffect(() => {
+    if (isOpen) {
+      dialogRef.current.showModal();
+    } else {
+      dialogRef.current.close();
+    }
+  }, [isOpen]);
 
   const totalSteps = 4;
-  const currentStep = 0;
 
   const modalRoot = document.getElementById("modal");
 
-  useImperativeHandle(ref, () => {
-    return {
-      open: () => dialogRef.current.showModal(),
-      close: () => dialogRef.current.close(),
-    };
-  });
+  function handleClose() {
+    onClose();
+    setStep(0);
+    setFormData({
+      mood: null,
+      feelings: [],
+      description: "",
+      sleepHours: null,
+    });
 
-  function handleMoodChange(mood) {
-    setFormData((prev) => ({ ...prev, mood }));
+    setResetKey((prev) => prev + 1);
   }
 
   function handleNext() {
-    if (step === 0 && !formData.mood) return;
     setStep((prev) => prev + 1);
   }
 
-  function handleClose() {
-    dialogRef.current.close();
-    setStep(0);
+  function handleSubmit(extraData = {}) {
+    const finalData = {
+      ...formData,
+      ...extraData,
+    };
+
+    const existingData = JSON.parse(localStorage.getItem("logData")) || [];
+    console.log("Submitting", finalData);
+
+    const newEntry = {
+      ...finalData,
+      id: Date.now(),
+    };
+
+    localStorage.setItem(
+      "logData",
+      JSON.stringify([...existingData, newEntry]),
+    );
+
+    handleClose();
   }
 
   const stepBarClasses = (active) =>
@@ -47,53 +76,65 @@ const MultiStepModal = forwardRef(function MultiStepModal({}, ref) {
   const modalContent = (
     <dialog
       ref={dialogRef}
-      className="fixed w-150 m-auto py-12 px-10 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)]"
+      className="fixed w-150 m-auto p-10 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)]"
     >
       <button onClick={handleClose} className="absolute right-6 top-6">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="text-[var(--color-neutral-300)]"
-        >
-          <path
-            d="M18 6L6 18"
-            stroke="currentColor"
-            stroke-width="4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M6 6L18 18"
-            stroke="currentColor"
-            stroke-width="4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+        <img src={closeIcon} />
       </button>
 
-      <h2 className="text-preset-2 mb-8">Log your mood</h2>
+      <form>
+        <h2 className="text-preset-2 text-dark-text mb-8">Log your mood</h2>
 
-      <div className="w-full flex justify-between mb-8 ">
-        {Array.from({ length: totalSteps }).map((_, index) => (
-          <span key={index} className={stepBarClasses(index === currentStep)} />
-        ))}
-      </div>
+        <div className="w-full flex justify-between mb-8 ">
+          {Array.from({ length: totalSteps }).map((_, index) => (
+            <span key={index} className={stepBarClasses(index === step)} />
+          ))}
+        </div>
 
-      {step === 0 && (
-        <MoodStep
-          value={formData.mood}
-          onChange={handleMoodChange}
-          onNext={handleNext}
-        />
-      )}
+        {step === 0 && (
+          <MoodStep
+            key={resetKey}
+            selectedMood={formData.mood}
+            setSelectedMood={(mood) =>
+              setFormData((prev) => ({ ...prev, mood }))
+            }
+            onNext={handleNext}
+          />
+        )}
+
+        {step === 1 && (
+          <FeelingStep
+            selectedFeelings={formData.feelings}
+            setSelectedFeelings={(feelings) =>
+              setFormData((prev) => ({ ...prev, feelings }))
+            }
+            onNext={handleNext}
+          />
+        )}
+
+        {step === 2 && (
+          <DescriptionStep
+            selectedDesc={formData.description}
+            setSelectedDesc={(desc) =>
+              setFormData((prev) => ({ ...prev, description: desc }))
+            }
+            onNext={handleNext}
+          />
+        )}
+        {step === 3 && (
+          <SleepHoursStep
+            selectedHours={formData.sleepHours}
+            setSelectedHours={(hours) =>
+              setFormData((prev) => ({ ...prev, sleepHours: hours }))
+            }
+            onSubmitStep={handleSubmit}
+          />
+        )}
+      </form>
     </dialog>
   );
 
   return createPortal(modalContent, modalRoot);
-});
+}
 
 export default MultiStepModal;

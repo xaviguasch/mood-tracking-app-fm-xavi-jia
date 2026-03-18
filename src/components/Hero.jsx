@@ -1,16 +1,12 @@
-import { useRef } from "react";
+import { useState } from "react";
 import MultiStepModal from "../ui/MultiStepModal";
 
 function Hero() {
-  const modalRef = useRef();
-
-  function handleOpenModal() {
-    modalRef.current.open();
-  }
+  const [isOpen, setIsopen] = useState(false);
 
   return (
     <>
-      <MultiStepModal ref={modalRef} />
+      <MultiStepModal isOpen={isOpen} onClose={() => setIsopen(false)} />
 
       <div className="flex flex-col gap-12 items-center">
         <div className="flex flex-col gap-4 items-center">
@@ -27,7 +23,7 @@ function Hero() {
         </div>
 
         <button
-          onClick={handleOpenModal}
+          onClick={() => setIsopen(true)}
           className="text-preset-5 text-white-text bg-bright-blue-btn px-8 py-4 rounded-[10px]"
         >
           Log today's mood
