@@ -16,11 +16,11 @@ function App() {
       <Header />
       <Hero onOpenForm={() => setIsOpen(true)} />
       <Averages />
+
       <div>
         <Averages />
         <Trends />
       </div>
-      )}
     </div>
   );
 }
