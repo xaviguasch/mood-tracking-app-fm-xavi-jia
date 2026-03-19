@@ -47,6 +47,7 @@
   --color-light-indigo: var(--color-indigo-200);
   --color-light-red: var(--color-red-300);
   --color-dark-black: var(--color-neutral-900);
+  --color-light-grey: var(--color-neutral-300: #9393b7);
 
   --color-white-bg: var(--color-neutral-0);
 

@@ -25,7 +25,7 @@ function App() {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-dark-black/70 flex items-start justify-center z-50 pt-[70px] px-5">
+        <div className="fixed inset-0 bg-dark-black/70 flex items-start justify-center z-50 pt-[70px] px-5 overflow-y-auto">
           <Modal onIsModalOpen={() => setIsOpen(false)} />
         </div>
       )}
