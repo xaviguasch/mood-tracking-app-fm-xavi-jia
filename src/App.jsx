@@ -14,10 +14,8 @@ function App() {
   return (
     <div className="max-w-292.5 px-4  md:px-8 lg:px-0 mt-8 mx-auto ">
       <Header />
-      <Hero onOpenForm={() => setIsOpen(true)} />
-      <Averages />
-
-      <div>
+      <Hero />
+      <div className="pt-8 pb-20 px-4 ">
         <Averages />
         <Trends />
       </div>
