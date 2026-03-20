@@ -82,26 +82,28 @@ function MultiStepModal({ isOpen, onClose }) {
     handleClose();
   }
 
-  const stepBarClasses = (active) =>
+  const stepBarClasses = (index) =>
     `h-1.5 w-29.5 rounded-2xl ${
-      active ? "bg-bright-blue-btn" : "bg-[var(--color-blue-200)]"
+      index <= step ? "bg-bright-blue-btn" : "bg-[var(--color-blue-200)]"
     }`;
 
   const modalContent = (
     <dialog
       ref={dialogRef}
-      className="fixed w-full mx-5 mt-17.5 p-10 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)]"
+      className="fixed w-full mx-5 mt-17.5 px-5 py-8 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)]"
     >
       <button onClick={handleClose} className="absolute right-6 top-6">
         <img src={closeIcon} />
       </button>
 
-      <form>
-        <h2 className="text-preset-2 text-dark-text mb-8">Log your mood</h2>
+      <form className="flex flex-col gap-8">
+        <h2 className="text-preset-2-mobile md:text-preset-2 text-dark-text">
+          Log your mood
+        </h2>
 
-        <div className="w-full flex justify-between mb-8 ">
+        <div className="w-full flex justify-between gap-4">
           {Array.from({ length: totalSteps }).map((_, index) => (
-            <span key={index} className={stepBarClasses(index === step)} />
+            <span key={index} className={stepBarClasses(index)} />
           ))}
         </div>
 
