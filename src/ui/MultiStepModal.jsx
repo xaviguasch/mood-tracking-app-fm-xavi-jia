@@ -27,6 +27,18 @@ function MultiStepModal({ isOpen, onClose }) {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   const totalSteps = 4;
 
   const modalRoot = document.getElementById("modal");
@@ -64,19 +76,21 @@ function MultiStepModal({ isOpen, onClose }) {
 
     localStorage.setItem(
       "logData",
-      JSON.stringify([...existingData, newEntry]),
+      JSON.stringify([...existingData, newEntry])
     );
 
     handleClose();
   }
 
   const stepBarClasses = (active) =>
-    `h-1.5 w-29.5 rounded-2xl ${active ? "bg-bright-blue-btn" : "bg-[var(--color-blue-200)]"}`;
+    `h-1.5 w-29.5 rounded-2xl ${
+      active ? "bg-bright-blue-btn" : "bg-[var(--color-blue-200)]"
+    }`;
 
   const modalContent = (
     <dialog
       ref={dialogRef}
-      className="fixed w-150 m-auto p-10 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)]"
+      className="fixed w-full mx-5 mt-17.5 p-10 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)]"
     >
       <button onClick={handleClose} className="absolute right-6 top-6">
         <img src={closeIcon} />
