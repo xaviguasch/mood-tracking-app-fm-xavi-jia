@@ -2,16 +2,16 @@ import { useState } from "react";
 
 import infoCircleIcon from "../assets/images/icon-info-circle.svg";
 
-const sleepHours = [
-  "9+ hours",
-  "7-8 hours",
-  "5-6 hours",
-  "3-4 hours",
-  "0-2 hours",
+const sleepOptions = [
+  { label: "9+ hours", value: 9 },
+  { label: "7-8 hours", value: 7.5 },
+  { label: "5-6 hours", value: 5.5 },
+  { label: "3-4 hours", value: 3.5 },
+  { label: "0-2 hours", value: 2 },
 ];
 
-function SleepHoursStep({ selectedHours, setSelectedHours, onSubmitStep }) {
-  const [localSleepHours, setLocalSleepHours] = useState(selectedHours || "");
+function SleepHoursStep({ onSubmitStep }) {
+  const [localSleepHours, setLocalSleepHours] = useState("");
   const [error, setError] = useState("");
 
   function handleContinue(e) {
@@ -32,25 +32,25 @@ function SleepHoursStep({ selectedHours, setSelectedHours, onSubmitStep }) {
       </h3>
 
       <div className="mb-8 flex flex-col gap-2.5">
-        {sleepHours.map((hours) => (
+        {sleepOptions.map((option) => (
           <label
-            key={hours}
+            key={option.label}
             className={`flex items-center gap-2.5 w-full h-15.5 px-6 bg-white-text rounded-xl 
               cursor-pointer border-2 
-              ${localSleepHours === hours ? "border-[var(--color-blue-600)]" : "border-translucid-line"}
+              ${localSleepHours === option.label ? "border-[var(--color-blue-600)]" : "border-translucid-line"}
              `}
           >
             <input
               type="radio"
               name="sleepHours"
-              value={hours}
-              checked={localSleepHours === hours}
+              value={option.value}
+              checked={localSleepHours === option.value}
               onChange={() => {
-                setLocalSleepHours(hours);
+                setLocalSleepHours(option.value);
                 setError("");
               }}
             />
-            <span className="text-preset-5">{hours}</span>
+            <span className="text-preset-5">{option.label}</span>
           </label>
         ))}
       </div>

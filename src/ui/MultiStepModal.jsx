@@ -14,8 +14,9 @@ function MultiStepModal({ isOpen, onClose }) {
     description: "",
     sleepHours: null,
   });
-
   const [resetKey, setResetKey] = useState(0);
+
+  console.log(formData);
 
   const dialogRef = useRef();
 
@@ -61,26 +62,53 @@ function MultiStepModal({ isOpen, onClose }) {
   }
 
   function handleSubmit(extraData = {}) {
-    const finalData = {
-      ...formData,
-      ...extraData,
-    };
+    const moodApp = JSON.parse(localStorage.getItem("moodApp")) || {};
+    const currentUserId = moodApp.currentUserId;
 
-    const existingData = JSON.parse(localStorage.getItem("logData")) || [];
-    console.log("Submitting", finalData);
-
+    // id for entries is needed for the future
     const newEntry = {
-      ...finalData,
-      id: Date.now(),
+      userId: currentUserId,
+      createdAt: new Date().toISOString(),
+      mood: formData.mood,
+      feelings: [...formData.feelings],
+      journalEntry: formData.description,
+      sleepHours: extraData.sleepHours,
     };
+
+    const updatedEntries = [...(moodApp.moodEntries || []), newEntry];
 
     localStorage.setItem(
-      "logData",
-      JSON.stringify([...existingData, newEntry])
+      "moodApp",
+      JSON.stringify({
+        ...moodApp,
+        moodEntries: updatedEntries,
+      }),
     );
 
     handleClose();
+
+    // const finalData = {
+    //   ...formData,
+    //   ...extraData,
+    // };
+
+    // const existingData = JSON.parse(localStorage.getItem("logData")) || [];
+    // console.log("Submitting", finalData);
+
+    // const newEntry = {
+    //   ...finalData,
+    //   id: Date.now(),
+    // };
+
+    // localStorage.setItem(
+    //   "logData",
+    //   JSON.stringify([...existingData, newEntry]),
+    // );
+
+    // handleClose();
   }
+
+  console.log(JSON.parse(localStorage.getItem("moodApp")));
 
   const stepBarClasses = (index) =>
     `h-1.5 w-29.5 rounded-2xl ${
