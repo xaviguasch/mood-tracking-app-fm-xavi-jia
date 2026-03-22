@@ -12,10 +12,12 @@ function App() {
   console.log(isModalOpen);
 
   return (
-    <div className="max-w-292.5 px-4  md:px-8 lg:px-0 mt-8 mx-auto ">
-      <Header />
-      <Hero />
-      <div className="pt-8 pb-20 px-4 ">
+    <div className="max-w-292.5 px-4 md:px-8 xl:px-0 pt-8 md:pt-10 pb-20 mx-auto flex flex-col justify-start gap-16">
+      <div className="flex flex-col gap-12">
+        <Header />
+        <Hero />
+      </div>
+      <div className="flex flex-col gap-8 xl:flex-row">
         <Averages />
         <Trends />
       </div>

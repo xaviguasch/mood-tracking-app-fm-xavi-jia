@@ -20,10 +20,8 @@ function Trends() {
   });
 
   return (
-    <div className="bg-trends-background w-full rounded-2xl py-5 md:py-6 px-4 md:px-6 flex flex-col gap-8">
-      <h2 className="text-preset-3-mobile md:text-preset-3">
-        Mood and sleep trends
-      </h2>
+    <div className="bg-trends-background flex-1 min-w-0 rounded-2xl py-5 md:py-6 px-4 md:px-6 flex flex-col gap-8">
+      <h2 className="text-preset-mood">Mood and sleep trends</h2>
 
       <div className="flex gap-4">
         {/* HOURS COLUMN */}

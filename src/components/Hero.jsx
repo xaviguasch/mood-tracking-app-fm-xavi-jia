@@ -8,12 +8,12 @@ function Hero() {
     <>
       <MultiStepModal isOpen={isOpen} onClose={() => setIsopen(false)} />
 
-      <div className="flex flex-col gap-12 items-center">
-        <div className="flex flex-col gap-4 items-center">
-          <h2 className="text-bright-blue-text font-bold text-2xl">
+      <div className="flex flex-col gap-12  items-center">
+        <div className="flex flex-col gap-4 md:gap-2.5 items-center">
+          <h2 className="text-bright-blue-text font-bold text-preset-3">
             Hello, Lisa!
           </h2>
-          <h1 className="text-preset-1-mobile text-center">
+          <h1 className="text-preset-1  text-center">
             How are you feeling today?
           </h1>
 
@@ -24,7 +24,7 @@ function Hero() {
 
         <button
           onClick={() => setIsopen(true)}
-          className="text-preset-5 text-white-text bg-bright-blue-btn px-8 py-4 rounded-[10px]"
+          className="text-preset-5 text-white-text bg-bright-blue-btn px-8 py-4 rounded-[10px] cursor-pointer"
         >
           Log today's mood
         </button>

@@ -54,8 +54,8 @@ function AverageMood({ last5Entries, previous5Entries }) {
   }
 
   return (
-    <div className="mb-6">
-      <h2 className="text-preset-5 mb-3">
+    <div className="flex flex-col gap-4">
+      <h2 className="text-preset-5">
         Average Mood{" "}
         <span className="text-preset-7 text-light-grey-text">
           (Last 5 Check-ins)
