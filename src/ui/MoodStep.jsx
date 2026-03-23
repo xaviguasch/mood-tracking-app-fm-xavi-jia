@@ -8,11 +8,11 @@ import verySadIcon from "../assets/images/icon-very-sad-color.svg";
 import infoCircleIcon from "../assets/images/icon-info-circle.svg";
 
 const moods = [
-  { type: "Very Happy", icon: veryHappyIcon },
-  { type: "Happy", icon: happyIcon },
-  { type: "Neutral", icon: neutralIcon },
-  { type: "Sad", icon: sadIcon },
-  { type: "Very Sad", icon: verySadIcon },
+  { type: "Very Happy", value: 2, icon: veryHappyIcon },
+  { type: "Happy", value: 1, icon: happyIcon },
+  { type: "Neutral", value: 0, icon: neutralIcon },
+  { type: "Sad", value: -1, icon: sadIcon },
+  { type: "Very Sad", value: -2, icon: verySadIcon },
 ];
 
 function MoodStep({ selectedMood, setSelectedMood, onNext }) {
@@ -45,10 +45,10 @@ function MoodStep({ selectedMood, setSelectedMood, onNext }) {
               <input
                 type="radio"
                 name="mood"
-                value={mood.type}
-                checked={localMood === mood.type}
+                value={mood.value}
+                checked={localMood === mood.value}
                 onChange={() => {
-                  setLocalMood(mood.type);
+                  setLocalMood(mood.value);
                   setError("");
                 }}
               />
