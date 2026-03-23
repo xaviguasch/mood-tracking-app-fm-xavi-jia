@@ -1,11 +1,12 @@
 import AverageMood from "./AverageMood";
 import AverageSleep from "./AverageSleep";
-import data from "../../../data.json";
 
-function Averages() {
-  const sortedEntries = [...data.moodEntries].sort(
-    (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+function Averages({ moodEntries }) {
+  const sortedEntries = [...moodEntries].sort(
+    (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
   );
+
+  console.log(sortedEntries);
 
   const last5Entries = sortedEntries.slice(-5);
   const previous5Entries = sortedEntries.slice(-10, -5);
