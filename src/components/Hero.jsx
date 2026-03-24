@@ -4,7 +4,7 @@ import MultiStepModal from "../ui/MultiStepModal";
 import { getData } from "../util/storage";
 import DailyPanel from "../ui/DailyPanel";
 
-function Hero() {
+function Hero({ onAddEntry }) {
   const [isOpen, setIsopen] = useState(false);
 
   const dataFromLocalStorage = getData().moodEntries;
@@ -27,7 +27,11 @@ function Hero() {
 
   return (
     <>
-      <MultiStepModal isOpen={isOpen} onClose={() => setIsopen(false)} />
+      <MultiStepModal
+        isOpen={isOpen}
+        onClose={() => setIsopen(false)}
+        onAddEntry={onAddEntry}
+      />
 
       <div className="flex flex-col gap-12  items-center">
         <div className="flex flex-col gap-4 md:gap-2.5 items-center">

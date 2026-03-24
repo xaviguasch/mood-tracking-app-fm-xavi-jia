@@ -15,11 +15,11 @@ function AverageSleep({ last5Entries, previous5Entries }) {
       : null;
 
   function sleepRange(hours) {
-    if (hours < 5) return "<5 Hours";
-    if (hours < 6) return "5-6 Hours";
-    if (hours < 7) return "6-7 Hours";
-    if (hours < 8) return "7-8 Hours";
-    else return "8+ Hours";
+    if (hours <= 2) return "0-2 Hours";
+    if (hours <= 4) return "3-4 Hours";
+    if (hours <= 6) return "5-6 Hours";
+    if (hours <= 8) return "7-8 Hours";
+    else return "9+ Hours";
   }
 
   const lastSleepRange = lastSleepAverage ? sleepRange(lastSleepAverage) : null;

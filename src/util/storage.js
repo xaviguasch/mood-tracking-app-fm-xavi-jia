@@ -11,7 +11,3 @@ export function initStorage() {
 export function getData() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY));
 }
-
-export function setData(newData) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
-}
