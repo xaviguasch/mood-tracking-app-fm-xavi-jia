@@ -22,10 +22,14 @@ function MoodDailyPanel({ mood, moodQuotes }) {
     moodQuotesArr[Math.floor(Math.random() * moodQuotesArr.length)];
 
   return (
-    <div>
-      <span>I'm feeling </span>
+    <div className="flex flex-col justify-start items-center gap-8 bg-white rounded-2xl border border-translucid-line px-4 py-8">
+      <div className="flex flex-col justify-start items-center">
+        <span className="text-preset-mood text-dark-text/70">I'm feeling </span>
+        <span className="text-preset-2 text-dark-text" s>
+          {moodData?.type}
+        </span>
+      </div>
 
-      <span>{moodData?.type}</span>
       <img src={moodData?.icon} alt="" />
 
       <p>{randomQuote}</p>
