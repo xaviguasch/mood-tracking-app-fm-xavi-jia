@@ -1,8 +1,29 @@
 import { useState } from "react";
 import MultiStepModal from "../ui/MultiStepModal";
 
+import { getData } from "../util/storage";
+import DailyPanel from "../ui/DailyPanel";
+
 function Hero() {
   const [isOpen, setIsopen] = useState(false);
+
+  const dataFromLocalStorage = getData().moodEntries;
+  const moodQuotes = getData().moodQuotes;
+
+  const lastEntry = dataFromLocalStorage[dataFromLocalStorage.length - 1];
+
+  function isToday(entry) {
+    const createdDate = new Date(entry.createdAt);
+    const today = new Date();
+
+    return (
+      createdDate.getFullYear() === today.getFullYear() &&
+      createdDate.getMonth() === today.getMonth() &&
+      createdDate.getDate() === today.getDate()
+    );
+  }
+
+  const isTheLastDateFromToday = isToday(lastEntry);
 
   return (
     <>
@@ -22,12 +43,16 @@ function Hero() {
           </span>
         </div>
 
-        <button
-          onClick={() => setIsopen(true)}
-          className="text-preset-5 text-white-text bg-bright-blue-btn px-8 py-4 rounded-[10px] cursor-pointer"
-        >
-          Log today's mood
-        </button>
+        {isTheLastDateFromToday ? (
+          <DailyPanel lastEntry={lastEntry} moodQuotes={moodQuotes} />
+        ) : (
+          <button
+            onClick={() => setIsopen(true)}
+            className="text-preset-5 text-white-text bg-bright-blue-btn px-8 py-4 rounded-[10px] cursor-pointer"
+          >
+            Log today's mood
+          </button>
+        )}
       </div>
     </>
   );
