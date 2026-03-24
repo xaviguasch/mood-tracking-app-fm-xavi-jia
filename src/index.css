@@ -89,8 +89,8 @@ dialog::backdrop {
   }
 
   .text-preset-3 {
-    @apply font-semibold text-[24px] leading-[1.4] tracking-[0px]
-           md:font-bold md:text-[32px] md:tracking-[-0.3px];
+    @apply font-bold text-[32px] leading-[1.4] tracking-[0px]
+             md:tracking-[-0.3px];
   }
 
   .text-preset-mood {
@@ -122,7 +122,7 @@ dialog::backdrop {
   }
 
   .text-preset-6-regular {
-    @apply font-medium text-[18px] leading-[1.4] tracking-[-0.3px];
+    @apply font-normal text-[18px] leading-[1.4] tracking-[-0.3px];
   }
 
   .text-preset-7 {
