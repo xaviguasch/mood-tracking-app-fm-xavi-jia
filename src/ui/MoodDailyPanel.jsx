@@ -3,7 +3,7 @@ import happyIcon from "../assets/images/icon-happy-color.svg";
 import neutralIcon from "../assets/images/icon-neutral-color.svg";
 import sadIcon from "../assets/images/icon-sad-color.svg";
 import verySadIcon from "../assets/images/icon-very-sad-color.svg";
-import infoCircleIcon from "../assets/images/icon-info-circle.svg";
+import quoteIcon from "../assets/images/icon-quote.svg";
 
 const moods = [
   { type: "Very Happy", value: 2, icon: veryHappyIcon },
@@ -30,9 +30,12 @@ function MoodDailyPanel({ mood, moodQuotes }) {
         </span>
       </div>
 
-      <img src={moodData?.icon} alt="" />
+      <img className="w-50" src={moodData?.icon} alt="" />
 
-      <p>{randomQuote}</p>
+      <div className="flex flex-col justify-start items-center gap-4">
+        <img className="w-6" src={quoteIcon} alt="" />
+        <p className="text-preset-6-italic text-center">"{randomQuote}"</p>
+      </div>
     </div>
   );
 }
