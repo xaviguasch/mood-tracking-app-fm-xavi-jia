@@ -44,6 +44,7 @@
   --color-light-red: var(--color-red-300);
 
   --color-dark-grey: var(--color-neutral-900);
+  --color-white: var(--color-neutral-0);
 
   /* --color-background1: var(--color-white);
   --color-background2: var(--color-neutral-100);
@@ -93,7 +94,11 @@ dialog::backdrop {
   }
 
   .text-preset-mood {
-    @apply font-bold text-[28px] md:text-[32px] leading-[1.3] md:leading-[1.4] tracking-[-0.3px];
+    @apply font-bold text-[32px] leading-[1.4]  tracking-[-0.3px];
+  }
+
+  .text-preset-feeling {
+    @apply font-bold text-[32px]  leading-[1.3] md:leading-[1.4] tracking-[-0.3px];
   }
 
   .text-preset-4 {

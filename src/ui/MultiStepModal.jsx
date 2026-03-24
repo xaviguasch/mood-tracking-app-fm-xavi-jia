@@ -16,7 +16,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
   });
   const [resetKey, setResetKey] = useState(0);
 
-  console.log(formData);
+  // console.log(formData);
 
   const dialogRef = useRef();
 
@@ -82,7 +82,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
       JSON.stringify({
         ...moodApp,
         moodEntries: updatedEntries,
-      }),
+      })
     );
 
     onAddEntry(newEntry);
@@ -110,7 +110,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
     // handleClose();
   }
 
-  console.log(JSON.parse(localStorage.getItem("moodApp")));
+  // console.log(JSON.parse(localStorage.getItem("moodApp")));
 
   const stepBarClasses = (index) =>
     `h-1.5 w-29.5 rounded-2xl ${
