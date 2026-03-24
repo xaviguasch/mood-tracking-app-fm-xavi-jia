@@ -4,10 +4,10 @@ import data from "../../data.json";
 
 const LEVEL_HEIGHT = 56;
 
-function Trends() {
+function Trends({ moodEntries }) {
   const rows = ["9+ hours", "7-8 hours", "5-6 hours", "3-4 hours", "0-2 hours"];
 
-  const entries = [...data.moodEntries]
+  const entries = [...moodEntries]
     .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
     .slice(-15);
 

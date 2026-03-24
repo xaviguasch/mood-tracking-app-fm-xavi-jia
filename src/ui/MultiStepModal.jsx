@@ -6,7 +6,7 @@ import DescriptionStep from "./DescriptionStep";
 import SleepHoursStep from "./SleepHoursStep";
 import closeIcon from "../assets/images/icon-close.svg";
 
-function MultiStepModal({ isOpen, onClose }) {
+function MultiStepModal({ isOpen, onClose, onAddEntry }) {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
     mood: null,
@@ -84,6 +84,8 @@ function MultiStepModal({ isOpen, onClose }) {
         moodEntries: updatedEntries,
       }),
     );
+
+    onAddEntry(newEntry);
 
     handleClose();
 
