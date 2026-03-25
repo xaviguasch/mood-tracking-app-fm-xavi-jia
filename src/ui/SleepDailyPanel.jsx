@@ -2,7 +2,7 @@ import sleepIcon from "../assets/images/icon-sleep.svg";
 
 function SleepDailyPanel({ sleepHours }) {
   return (
-    <div className="flex flex-col justify-start items-start gap-4 bg-white rounded-2xl border border-translucid-line px-5 py-5">
+    <div className="flex flex-col justify-start items-start gap-4 bg-white rounded-2xl border border-translucid-line px-5 py-5 lg:h-full">
       <div className="flex justify-start items-center gap-3">
         {/* temporary background, SVG issues */}
         <div className="bg-red-500">
