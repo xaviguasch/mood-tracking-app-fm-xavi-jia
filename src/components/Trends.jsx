@@ -39,12 +39,12 @@ function Trends({ moodEntries }) {
         </div>
 
         {/* BARS + DATES */}
-        <div className="overflow-x-auto flex-1">
+        <div className="overflow-x-auto overflow-y-hidden flex-1">
           <div className="min-w-max flex flex-col gap-3">
             {/* BARS */}
             <div
-              className="flex items-end gap-4 pt-2"
-              style={{ height: `${LEVEL_HEIGHT * 5}px` }}
+              className="flex items-end gap-4"
+              style={{ height: `${LEVEL_HEIGHT * 5 + 8}px` }}
             >
               {entries.map((entry, i) => (
                 <div key={i} className="flex justify-center w-10">

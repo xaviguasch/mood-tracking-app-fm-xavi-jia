@@ -10,7 +10,7 @@ function ReflectionDailyPanel({ journalEntry, feelings }) {
         </p>
       </div>
       <p className="text-dark-text text-preset-6">{journalEntry}</p>
-      <div className="text-preset-6-italic text-light-gray gap-3 flex ">
+      <div className="text-preset-6-italic text-light-gray gap-3 flex mt-6">
         {feelings.map((feeling) => (
           <span key={feeling}>#{feeling}</span>
         ))}
