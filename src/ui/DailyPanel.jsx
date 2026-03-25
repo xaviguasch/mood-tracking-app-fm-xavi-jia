@@ -8,7 +8,7 @@ function DailyPanel({ lastEntry, moodQuotes }) {
   console.log(lastEntry);
 
   return (
-    <div className="flex flex-col gap-5 justify-start items-stretch">
+    <div className="flex flex-col gap-5 justify-start items-stretch w-full">
       <MoodDailyPanel mood={mood} moodQuotes={moodQuotes} />
       <SleepDailyPanel sleepHours={sleepHours} />
       <ReflectionDailyPanel journalEntry={journalEntry} feelings={feelings} />
