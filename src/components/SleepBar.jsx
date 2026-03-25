@@ -87,7 +87,7 @@ function SleepBar({ entry }) {
 
       <div
         style={{ height: `${getHeight(entry.sleepHours)}px` }}
-        className={`w-10 rounded-full flex items-start justify-center pt-1.5 text-xl ${getColor(
+        className={`w-10 rounded-full cursor-pointer flex items-start justify-center pt-1.5 text-xl ${getColor(
           entry.mood
         )}`}
       >
