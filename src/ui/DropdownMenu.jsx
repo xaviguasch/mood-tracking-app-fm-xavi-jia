@@ -4,9 +4,6 @@ import logoutIcon from "../assets/images/icon-logout.svg";
 function DropdownMenu({ user, setIsMenuOpen, setIsModalOpen }) {
   return (
     <div
-      //   className="absolute top-12 right-0 w-full min-[450px]:w-50 flex flex-col gap-3 bg-trends-background text-dark-text
-      // text-left p-3 rounded-lg"
-
       className="fixed left-4 right-4 top-24 z-50 
         min-[450px]:absolute min-[450px]:top-14 min-[450px]:right-0 min-[450px]:left-auto min-[450px]:w-64 
         flex flex-col gap-3 bg-trends-background text-dark-text p-3 rounded-lg shadow-lg"

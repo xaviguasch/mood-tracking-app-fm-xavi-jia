@@ -80,7 +80,7 @@ function AverageMood({ last5Entries, previous5Entries }) {
               <img src={moodIcon} />
               {averageMood}
             </h3>
-            <p className="text-preset-7 flex items-center gap-2">
+            <p className="text-preset-7 flex items-start gap-2">
               <img src={trendIcon} />
               {trendText}
             </p>

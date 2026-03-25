@@ -63,10 +63,10 @@ function AverageSleep({ last5Entries, previous5Entries }) {
         ) : (
           <>
             <h3 className="text-preset-4 mb-3 flex items-center gap-3">
-              <img src={sleepIcon} />
+              <img src={sleepIcon} className="text-white" />
               {lastSleepRange}
             </h3>
-            <p className="text-preset-7 opacity-70 flex items-center gap-2">
+            <p className="text-preset-7 opacity-70 flex items-start gap-2">
               <img src={sleepTrendIcon} />
               {sleepTrendText}
             </p>

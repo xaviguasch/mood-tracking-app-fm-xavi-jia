@@ -25,7 +25,7 @@ function SettingsModal({ user, isModalOpen, onClose }) {
   return createPortal(
     <dialog
       ref={ref}
-      className="relative w-150 m-auto px-4 py-10 md:px-10 md:py-12 rounded-2xl text-dark-text flex flex-col gap-6 md:gap-8 "
+      className="relative w-150 mt-18 md:mt-22 mx-auto px-4 py-10 md:px-10 md:py-12 rounded-2xl text-dark-text flex flex-col gap-6 md:gap-8 "
     >
       <button onClick={onClose} className="absolute right-6 top-6 ">
         <img src={closeIcon} className="w-2.5 h-2.5 md:w-3.75 md:h-3.75" />
