@@ -1,4 +1,4 @@
-import sleepIcon from "../assets/images/icon-sleep.svg";
+import sleepIcon from "../assets/images/icon-sleep-figma.png";
 import SleepBar from "./SleepBar";
 import data from "../../data.json";
 
