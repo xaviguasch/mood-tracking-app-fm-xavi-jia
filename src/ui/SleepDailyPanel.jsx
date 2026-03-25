@@ -1,4 +1,4 @@
-import sleepIcon from "../assets/images/icon-sleep-figma.png";
+import sleepIcon from "../assets/images/sleep-icon-figma.svg";
 
 function SleepDailyPanel({ sleepHours }) {
   return (
