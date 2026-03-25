@@ -1,20 +1,34 @@
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 
-import veryHappyIcon from "../assets/images/icon-very-happy-white.svg";
-import happyIcon from "../assets/images/icon-happy-white.svg";
-import neutralIcon from "../assets/images/icon-neutral-white.svg";
-import sadIcon from "../assets/images/icon-sad-white.svg";
-import verySadIcon from "../assets/images/icon-very-sad-white.svg";
+import veryHappyWhiteIcon from "../assets/images/icon-very-happy-white.svg";
+import happyWhiteIcon from "../assets/images/icon-happy-white.svg";
+import neutralWhiteIcon from "../assets/images/icon-neutral-white.svg";
+import sadWhiteIcon from "../assets/images/icon-sad-white.svg";
+import verySadWhiteIcon from "../assets/images/icon-very-sad-white.svg";
+
+import veryHappyColorIcon from "../assets/images/icon-very-happy-color.svg";
+import happyColorIcon from "../assets/images/icon-happy-color.svg";
+import neutralColorIcon from "../assets/images/icon-neutral-color.svg";
+import sadColorIcon from "../assets/images/icon-sad-color.svg";
+import verySadColorIcon from "../assets/images/icon-very-sad-color.svg";
 
 const LEVEL_HEIGHT = 56;
 
 // Map mood values to icons
-const moodIcons = {
-  "-2": verySadIcon,
-  "-1": sadIcon,
-  0: neutralIcon,
-  1: happyIcon,
-  2: veryHappyIcon,
+const moodWhiteIcons = {
+  "-2": verySadWhiteIcon,
+  "-1": sadWhiteIcon,
+  0: neutralWhiteIcon,
+  1: happyWhiteIcon,
+  2: veryHappyWhiteIcon,
+};
+
+const moodColorIcons = {
+  "-2": verySadColorIcon,
+  "-1": sadColorIcon,
+  0: neutralColorIcon,
+  1: happyColorIcon,
+  2: veryHappyColorIcon,
 };
 
 // Map mood values to labels
@@ -26,8 +40,10 @@ const moodLabels = {
   2: "Very Happy",
 };
 
-function SleepBar({ entry }) {
+function SleepBar({ entry, containerRef }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [popoverSide, setPopoverSide] = useState("right");
+  const barRef = useRef();
 
   // Calculate bar height based on sleep hours
   const getHeight = (hours) => {
@@ -48,39 +64,70 @@ function SleepBar({ entry }) {
     return "bg-gray-300";
   };
 
+  function handleMouseEnter() {
+    if (!isHovered && barRef.current && containerRef.current) {
+      const barRect = barRef.current.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
+
+      const spaceOnRight = containerRect.right - barRect.right;
+      const containerWidth = 180;
+
+      if (spaceOnRight < containerWidth) {
+        setPopoverSide("left");
+      } else {
+        setPopoverSide("right");
+      }
+    }
+    setIsHovered(!isHovered);
+  }
+
   return (
     <div
+      ref={barRef}
       className="relative flex flex-col items-center"
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered && entry && (
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-60 p-3 bg-white border border-translucid-line rounded-[10px] z-50 shadow-md flex flex-col gap-3">
+        <div
+          className={`absolute bottom-2
+          ${popoverSide === "left" ? "right-0 translate-x-[-25%]" : "left-0 translate-x-[25%]"}
+          w-[175px] p-3 bg-white border
+        border-translucid-line rounded-[10px] z-50 shadow-md flex flex-col gap-3.5`}
+        >
           <div className="flex flex-col justify-start items-start gap-1.5">
-            <span className="text-preset-8">Mood:</span>
-            <span className="text-preset-9 flex items-center gap-1">
+            <span className="text-preset-8 text-light-grey-text">Mood</span>
+            <span className="text-preset-7 text-dark-text flex items-center gap-1">
               <img
-                src={moodIcons[entry.mood]}
+                src={moodColorIcons[entry.mood]}
                 alt={moodLabels[entry.mood]}
-                className="w-6 h-6"
+                className="w-4 h-4"
               />
               {moodLabels[entry.mood]}
             </span>
           </div>
 
           <div className="flex flex-col justify-start items-start gap-1.5">
-            <span className="text-preset-8">Sleep:</span>
-            <span className="text-preset-9">{entry.sleepHours}+ hours</span>
+            <span className="text-preset-8 text-light-grey-text">Sleep</span>
+            <span className="text-preset-7 text-dark-text">
+              {entry.sleepHours}+ hours
+            </span>
           </div>
 
           <div className="flex flex-col justify-start items-start gap-1.5">
-            <span className="text-preset-8">Reflection:</span>
-            <span className="text-preset-9">{entry.journalEntry}</span>
+            <span className="text-preset-8 text-light-grey-text">
+              Reflection
+            </span>
+            <span className="text-preset-9 text-dark-text">
+              {entry.journalEntry}
+            </span>
           </div>
 
           <div className="flex flex-col justify-start items-start gap-1.5">
-            <span className="text-preset-8">Tags:</span>
-            <span className="text-preset-9">{entry.feelings.join(", ")}</span>
+            <span className="text-preset-8 text-light-grey-text">Tags</span>
+            <span className="text-preset-9 text-dark-text">
+              {entry.feelings.join(", ")}
+            </span>
           </div>
         </div>
       )}
@@ -88,13 +135,13 @@ function SleepBar({ entry }) {
       <div
         style={{ height: `${getHeight(entry.sleepHours)}px` }}
         className={`w-10 rounded-full cursor-pointer flex items-start justify-center pt-1.5 text-xl ${getColor(
-          entry.mood
+          entry.mood,
         )}`}
       >
         <img
-          src={moodIcons[entry.mood]}
+          src={moodWhiteIcons[entry.mood]}
           alt={moodLabels[entry.mood]}
-          className="w-6 h-6"
+          className="w-7.5 h-7.5"
         />
       </div>
     </div>
