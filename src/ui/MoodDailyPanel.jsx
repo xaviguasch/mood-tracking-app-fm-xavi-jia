@@ -22,19 +22,25 @@ function MoodDailyPanel({ mood, moodQuotes }) {
     moodQuotesArr[Math.floor(Math.random() * moodQuotesArr.length)];
 
   return (
-    <div className="flex flex-col justify-start items-center gap-8 bg-white rounded-2xl border border-translucid-line px-4 py-8">
-      <div className="flex flex-col justify-start items-center">
+    <div className="flex flex-col justify-start items-center gap-8 bg-white rounded-2xl border border-translucid-line px-4 py-8 md:items-start relative overflow-hidden md:p-8 md:gap-25 lg:h-full">
+      <div className="flex flex-col justify-start items-center md:items-start">
         <span className="text-preset-mood text-dark-text/70">I'm feeling </span>
         <span className="text-preset-2 text-dark-text" s>
           {moodData?.type}
         </span>
       </div>
 
-      <img className="w-50" src={moodData?.icon} alt="" />
+      <img
+        className="w-50 md:absolute md:-bottom-9 md:right-8 md:w-78.75"
+        src={moodData?.icon}
+        alt=""
+      />
 
-      <div className="flex flex-col justify-start items-center gap-4">
+      <div className="flex flex-col justify-start items-center gap-4 md:items-start md:max-w-62.5">
         <img className="w-6" src={quoteIcon} alt="" />
-        <p className="text-preset-6-italic text-center">"{randomQuote}"</p>
+        <p className="text-preset-6-italic text-center md:text-left">
+          "{randomQuote}"
+        </p>
       </div>
     </div>
   );

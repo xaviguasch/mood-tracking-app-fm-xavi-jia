@@ -19,7 +19,7 @@ function App() {
     const foundUser = data.users.find((user) => user.id === currentUserId);
 
     const entries = data.moodEntries.filter(
-      (entry) => entry.userId === currentUserId,
+      (entry) => entry.userId === currentUserId
     );
 
     setCurrentUser(foundUser);
@@ -32,7 +32,7 @@ function App() {
   }
 
   return (
-    <div className="max-w-292.5 px-4 md:px-8 xl:px-0 pt-8 md:pt-10 pb-20 mx-auto flex flex-col justify-start gap-16">
+    <div className="max-w-292.5 px-4 md:px-8 xl:px-0 pt-8 md:pt-10 pb-20 mx-auto flex flex-col justify-start gap-8">
       <div className="flex flex-col gap-12">
         <Header currentUser={currentUser} />
         <Hero onAddEntry={addNewEntry} />

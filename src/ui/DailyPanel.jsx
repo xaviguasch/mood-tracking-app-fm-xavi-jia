@@ -8,10 +8,18 @@ function DailyPanel({ lastEntry, moodQuotes }) {
   console.log(lastEntry);
 
   return (
-    <div className="flex flex-col gap-5 justify-start items-stretch">
-      <MoodDailyPanel mood={mood} moodQuotes={moodQuotes} />
-      <SleepDailyPanel sleepHours={sleepHours} />
-      <ReflectionDailyPanel journalEntry={journalEntry} feelings={feelings} />
+    <div className="w-full gap-5 flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-2 lg:gap-x-8">
+      <div className="lg:col-span-2 lg:row-span-2 h-full">
+        <MoodDailyPanel mood={mood} moodQuotes={moodQuotes} />
+      </div>
+
+      <div className="lg:col-span-1 lg:row-span-1 h-full">
+        <SleepDailyPanel sleepHours={sleepHours} />
+      </div>
+
+      <div className="lg:col-span-1 lg:row-span-1 h-full">
+        <ReflectionDailyPanel journalEntry={journalEntry} feelings={feelings} />
+      </div>
     </div>
   );
 }
