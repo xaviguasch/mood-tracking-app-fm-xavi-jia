@@ -21,10 +21,13 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
   const dialogRef = useRef();
 
   useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return; // safety
+
     if (isOpen) {
-      dialogRef.current.showModal();
+      if (!dialog.open) dialog.showModal();
     } else {
-      dialogRef.current.close();
+      if (dialog.open) dialog.close();
     }
   }, [isOpen]);
 
@@ -120,63 +123,71 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
   const modalContent = (
     <dialog
       ref={dialogRef}
-      className="fixed w-full mx-5 mt-17.5 px-5 py-8 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)]"
+      className="fixed inset-0 flex justify-center items-start"
+      onClick={(e) => {
+        // close modal if user clicks outside the inner content
+        if (e.target === e.currentTarget) handleClose();
+      }}
     >
-      <button onClick={handleClose} className="absolute right-6 top-6">
-        <img src={closeIcon} />
-      </button>
+      <div className="relative w-full max-w-xl mx-5 md:mx-21 mt-20 px-5 py-8 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)] shadow-lg">
+        <button
+          onClick={handleClose}
+          className="absolute right-6 top-6"
+          aria-label="Close modal"
+        >
+          <img src={closeIcon} alt="Close" />
+        </button>
 
-      <form className="flex flex-col gap-8">
-        <h2 className="text-preset-2-mobile md:text-preset-2 text-dark-text">
-          Log your mood
-        </h2>
+        <form className="flex flex-col gap-8">
+          <h2 className="text-preset-a text-dark-text">Log your mood</h2>
 
-        <div className="w-full flex justify-between gap-4">
-          {Array.from({ length: totalSteps }).map((_, index) => (
-            <span key={index} className={stepBarClasses(index)} />
-          ))}
-        </div>
+          <div className="w-full flex justify-between gap-4">
+            {Array.from({ length: totalSteps }).map((_, index) => (
+              <span key={index} className={stepBarClasses(index)} />
+            ))}
+          </div>
 
-        {step === 0 && (
-          <MoodStep
-            key={resetKey}
-            selectedMood={formData.mood}
-            setSelectedMood={(mood) =>
-              setFormData((prev) => ({ ...prev, mood }))
-            }
-            onNext={handleNext}
-          />
-        )}
+          {step === 0 && (
+            <MoodStep
+              key={resetKey}
+              selectedMood={formData.mood}
+              setSelectedMood={(mood) =>
+                setFormData((prev) => ({ ...prev, mood }))
+              }
+              onNext={handleNext}
+            />
+          )}
 
-        {step === 1 && (
-          <FeelingStep
-            selectedFeelings={formData.feelings}
-            setSelectedFeelings={(feelings) =>
-              setFormData((prev) => ({ ...prev, feelings }))
-            }
-            onNext={handleNext}
-          />
-        )}
+          {step === 1 && (
+            <FeelingStep
+              selectedFeelings={formData.feelings}
+              setSelectedFeelings={(feelings) =>
+                setFormData((prev) => ({ ...prev, feelings }))
+              }
+              onNext={handleNext}
+            />
+          )}
 
-        {step === 2 && (
-          <DescriptionStep
-            selectedDesc={formData.description}
-            setSelectedDesc={(desc) =>
-              setFormData((prev) => ({ ...prev, description: desc }))
-            }
-            onNext={handleNext}
-          />
-        )}
-        {step === 3 && (
-          <SleepHoursStep
-            selectedHours={formData.sleepHours}
-            setSelectedHours={(hours) =>
-              setFormData((prev) => ({ ...prev, sleepHours: hours }))
-            }
-            onSubmitStep={handleSubmit}
-          />
-        )}
-      </form>
+          {step === 2 && (
+            <DescriptionStep
+              selectedDesc={formData.description}
+              setSelectedDesc={(desc) =>
+                setFormData((prev) => ({ ...prev, description: desc }))
+              }
+              onNext={handleNext}
+            />
+          )}
+          {step === 3 && (
+            <SleepHoursStep
+              selectedHours={formData.sleepHours}
+              setSelectedHours={(hours) =>
+                setFormData((prev) => ({ ...prev, sleepHours: hours }))
+              }
+              onSubmitStep={handleSubmit}
+            />
+          )}
+        </form>
+      </div>
     </dialog>
   );
 

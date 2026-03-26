@@ -31,15 +31,19 @@ function MoodStep({ selectedMood, setSelectedMood, onNext }) {
   };
 
   return (
-    <div className="text-dark-text">
-      <h3 className="text-preset-3 mb-8">How was your mood today?</h3>
+    <div className="text-dark-text flex flex-col justify-start items-start gap-8">
+      <h3 className="text-preset-mood">How was your mood today?</h3>
 
-      <div className="flex flex-col gap-2.5 mb-8">
+      <div className="flex flex-col gap-2.5 w-full">
         {moods.map((mood) => (
           <label
             key={mood.type}
             className={`flex items-center justify-between w-full h-15.5 px-6 bg-white-text rounded-xl cursor-pointer border-2 
-              ${localMood === mood.type ? "border-[var(--color-blue-600)]" : "border-translucid-line"}`}
+              ${
+                localMood === mood.type
+                  ? "border-[var(--color-blue-600)]"
+                  : "border-translucid-line"
+              }`}
           >
             <div className="flex items-center gap-2.5">
               <input
