@@ -20,7 +20,7 @@ function MoodStep({ selectedMood, setSelectedMood, onNext }) {
   const [error, setError] = useState("");
 
   const handleContinue = () => {
-    if (!localMood) {
+    if (localMood === null || localMood === undefined) {
       setError("Please select a mood before continuing.");
       return;
     }

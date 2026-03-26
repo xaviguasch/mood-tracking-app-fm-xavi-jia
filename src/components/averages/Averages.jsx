@@ -6,8 +6,6 @@ function Averages({ moodEntries }) {
     (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
   );
 
-  console.log(sortedEntries);
-
   const last5Entries = sortedEntries.slice(-5);
   const previous5Entries = sortedEntries.slice(-10, -5);
 

@@ -8,7 +8,7 @@ function DailyPanel({ lastEntry, moodQuotes }) {
   console.log(lastEntry);
 
   return (
-    <div className="w-full gap-5 flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-2 lg:gap-x-8">
+    <div className="mb-8 w-full gap-5 flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-2 lg:gap-x-8">
       <div className="lg:col-span-2 lg:row-span-2 h-full">
         <MoodDailyPanel mood={mood} moodQuotes={moodQuotes} />
       </div>

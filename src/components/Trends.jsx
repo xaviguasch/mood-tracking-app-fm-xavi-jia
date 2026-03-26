@@ -1,10 +1,12 @@
+import { useRef } from "react";
 import sleepIcon from "../assets/images/sleep-icon-figma.svg";
 import SleepBar from "./SleepBar";
-import data from "../../data.json";
 
 const LEVEL_HEIGHT = 56;
 
 function Trends({ moodEntries }) {
+  const sleepBarsRef = useRef();
+
   const rows = ["9+ hours", "7-8 hours", "5-6 hours", "3-4 hours", "0-2 hours"];
 
   const entries = [...moodEntries]
@@ -39,7 +41,10 @@ function Trends({ moodEntries }) {
         </div>
 
         {/* BARS + DATES */}
-        <div className="overflow-x-auto overflow-y-hidden flex-1">
+        <div
+          className="overflow-x-auto overflow-y-hidden flex-1"
+          ref={sleepBarsRef}
+        >
           <div className="min-w-max flex flex-col gap-3">
             {/* BARS */}
             <div
@@ -48,7 +53,7 @@ function Trends({ moodEntries }) {
             >
               {entries.map((entry, i) => (
                 <div key={i} className="flex justify-center w-10">
-                  <SleepBar entry={entry} />
+                  <SleepBar entry={entry} containerRef={sleepBarsRef} />
                 </div>
               ))}
             </div>
