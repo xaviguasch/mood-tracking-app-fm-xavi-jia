@@ -21,7 +21,9 @@ function DescriptionStep({ selectedDesc, setSelectedDesc, onNext }) {
 
   return (
     <div>
-      <h3 className="text-preset-3 text-dark-text mb-8">What about your day</h3>
+      <h3 className="text-preset-3 text-dark-text mb-8">
+        What about your day...
+      </h3>
 
       <textarea
         rows={4}

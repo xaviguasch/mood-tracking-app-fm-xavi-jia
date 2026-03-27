@@ -123,13 +123,14 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
   const modalContent = (
     <dialog
       ref={dialogRef}
-      className="fixed inset-0 flex justify-center items-start"
+      className="fixed inset-0 m-0 p-0 w-screen h-screen max-w-none max-h-none flex justify-center items-start px-5 md:px-[21px] bg-black/40"
       onClick={(e) => {
         // close modal if user clicks outside the inner content
         if (e.target === e.currentTarget) handleClose();
       }}
     >
-      <div className="relative w-full max-w-xl mx-5 md:mx-21 mt-20 px-5 py-8 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)] shadow-lg">
+      <div className="relative w-full max-w-[600px] mx-5 md:mx-0  mt-20 px-5 md:px-10 py-8 md:py-12 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)] shadow-lg">
+        {" "}
         <button
           onClick={handleClose}
           className="absolute right-6 top-6"
@@ -137,7 +138,6 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
         >
           <img src={closeIcon} alt="Close" />
         </button>
-
         <form className="flex flex-col gap-8">
           <h2 className="text-preset-a text-dark-text">Log your mood</h2>
 

@@ -62,14 +62,18 @@ function FeelingStep({ selectedFeelings, setSelectedFeelings, onNext }) {
         Select up to three tags:
       </p>
 
-      <div className="mb-8 flex gap-4 flex-wrap">
+      <div className="mb-8 flex gap-x-4 gap-y-3 flex-wrap">
         {feelingsList.map((feeling) => {
           const isChecked = localSelection.includes(feeling);
 
           return (
             <label
               key={feeling}
-              className={`py-2 px-4 rounded-xl bg-trends-background border-2 ${isChecked ? "border-[var(--color-blue-600)]" : "border-translucid-line"} flex gap-2`}
+              className={`py-2 px-4 rounded-xl bg-trends-background border-2 ${
+                isChecked
+                  ? "border-[var(--color-blue-600)]"
+                  : "border-translucid-line"
+              } flex gap-2`}
             >
               <input
                 type="checkbox"
