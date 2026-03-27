@@ -37,8 +37,11 @@ function SettingsModal({ user, isModalOpen, onClose }) {
         if (e.target === e.currentTarget) handleClose();
       }}
     >
-      <div className="relative w-full max-w-[600px] mx-5 md:mx-0  mt-20 px-5 py-8 rounded-2xl bg-white shadow-lg flex flex-col gap-6 md:gap-8 text-dark-text">
-        <button onClick={handleClose} className="absolute right-6 top-6">
+      <div className="relative w-full max-w-[600px] mx-5 md:mx-0  mt-20 px-5 md:px-10 py-10 md:py-12 rounded-2xl bg-white shadow-lg flex flex-col gap-6 md:gap-8 text-dark-text">
+        <button
+          onClick={handleClose}
+          className="absolute right-6 top-6 cursor-pointer"
+        >
           <img
             src={closeIcon}
             className="w-2.5 h-2.5 md:w-3.75 md:h-3.75"
