@@ -25,8 +25,8 @@ const feelingsList = [
   "Restless",
 ];
 
-function FeelingStep({ selectedFeelings, setSelectedFeelings, onNext }) {
-  const [localSelection, setLocalSelection] = useState(selectedFeelings);
+function FeelingStep({ setSelectedFeelings, onNext }) {
+  const [localSelection, setLocalSelection] = useState([]);
   const [error, setError] = useState("");
 
   function handleCheckbox(feeling) {
@@ -69,13 +69,20 @@ function FeelingStep({ selectedFeelings, setSelectedFeelings, onNext }) {
           return (
             <label
               key={feeling}
+              onKeyDown={(e) => {
+                if (e.key === " ") {
+                  e.preventDefault();
+                  handleCheckbox(feeling);
+                }
+              }}
               className={`py-2 px-4 rounded-xl bg-trends-background border-2 ${
                 isChecked
-                  ? "border-[var(--color-blue-600)]"
-                  : "border-translucid-line"
+                  ? "border-(--color-blue-600)"
+                  : "border-translucid-line focus-within:border-(--color-blue-600)"
               } flex gap-2`}
             >
               <input
+                className="outline-none"
                 type="checkbox"
                 checked={isChecked}
                 onChange={() => handleCheckbox(feeling)}
@@ -96,7 +103,7 @@ function FeelingStep({ selectedFeelings, setSelectedFeelings, onNext }) {
       <button
         type="button"
         onClick={handleContinue}
-        className=" text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text"
+        className=" text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text focus-style"
       >
         Continue
       </button>

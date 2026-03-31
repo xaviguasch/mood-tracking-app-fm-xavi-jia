@@ -24,12 +24,12 @@ function DropdownMenu({ user, setIsMenuOpen, setIsModalOpen }) {
             setIsMenuOpen(false);
             setIsModalOpen(true);
           }}
-          className="flex items-center gap-3.5 cursor-pointer text-preset-7"
+          className="flex items-center gap-3.5 cursor-pointer text-preset-7 focus-style"
         >
           <img src={settingsIcon} />
           Settings
         </button>
-        <button className="flex items-center gap-3.5 cursor-pointer text-preset-7">
+        <button className="flex items-center gap-3.5 cursor-pointer text-preset-7 focus-style">
           <img src={logoutIcon} />
           Logout
         </button>
