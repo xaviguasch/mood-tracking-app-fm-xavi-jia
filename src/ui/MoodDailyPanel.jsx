@@ -24,10 +24,8 @@ function MoodDailyPanel({ mood, moodQuotes }) {
   return (
     <div className="flex flex-col justify-start items-center gap-8 bg-white rounded-2xl border border-translucid-line px-4 py-8 md:items-start relative overflow-hidden md:p-8 md:gap-25 lg:h-full">
       <div className="flex flex-col justify-start items-center md:items-start">
-        <span className="text-preset-mood text-dark-text/70">I'm feeling </span>
-        <span className="text-preset-2 text-dark-text" s>
-          {moodData?.type}
-        </span>
+        <span className="text-preset-3 text-dark-text/70">I'm feeling </span>
+        <span className="text-preset-2 text-dark-text">{moodData?.type}</span>
       </div>
 
       <img

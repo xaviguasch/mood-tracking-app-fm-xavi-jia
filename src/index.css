@@ -100,13 +100,11 @@ dialog:not([open]) {
   }
 
   .text-preset-3 {
-    @apply font-bold text-[32px] leading-[1.4] tracking-[0px]
-             md:tracking-[-0.3px];
+    @apply font-bold text-[32px] leading-[1.4]  tracking-[-0.3px];
   }
 
-  .text-preset-mood {
-    @apply font-bold text-[28px] leading-[1.4]  tracking-[-0.3px]
-          md:text-[32px];
+  .text-preset-hours {
+    @apply font-bold text-[32px] leading-[1.4] tracking-[-0.3px];
   }
 
   .text-preset-feeling {
@@ -149,12 +147,13 @@ dialog:not([open]) {
     @apply font-normal text-[12px] leading-[1.1] tracking-[0px];
   }
 
-  .text-preset-hours {
-    @apply font-bold text-[32px] leading-[1.4] tracking-[-0.3px];
-  }
-
   .text-preset-a {
     @apply font-bold text-[32px] md:text-[40px] leading-[1.4];
+  }
+
+  .text-preset-mood {
+    @apply font-bold text-[28px] leading-[1.4]  tracking-[-0.3px]
+          md:text-[32px];
   }
 
   .scrollbar-horizontal::-webkit-scrollbar {
