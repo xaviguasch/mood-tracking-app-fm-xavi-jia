@@ -4,6 +4,8 @@ import MultiStepModal from "../ui/MultiStepModal";
 // import { getData } from "../util/storage";
 import DailyPanel from "../ui/DailyPanel";
 
+import { getFormattedDate } from "./../util/currentDate";
+
 function Hero({ onAddEntry, currentUser, userEntries, moodQuotes }) {
   const [isOpen, setIsopen] = useState(false);
 
@@ -47,7 +49,7 @@ function Hero({ onAddEntry, currentUser, userEntries, moodQuotes }) {
           </h1>
 
           <span className="text-preset-6 text-light-grey-text">
-            Wednesday, April 16th, 2025
+            {getFormattedDate()}
           </span>
         </div>
 

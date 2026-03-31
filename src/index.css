@@ -68,10 +68,21 @@ body {
   background: linear-gradient(180deg, #f5f5ff 72.99%, #e0e0ff 100%);
 }
 
+dialog {
+  background: transparent; /* remove default white */
+  border: none; /* remove default border */
+  padding: 0; /* avoid extra space */
+}
+
 /* Dark backdrop for <dialog> */
 /* Wasn't able to use variables on this! PENDING TO LOOK UP */
+
 dialog::backdrop {
   background: rgba(33, 33, 77, 0.7);
+}
+
+dialog:not([open]) {
+  display: none;
 }
 
 @layer utilities {
@@ -89,13 +100,11 @@ dialog::backdrop {
   }
 
   .text-preset-3 {
-    @apply font-bold text-[32px] leading-[1.4] tracking-[0px]
-             md:tracking-[-0.3px];
+    @apply font-bold text-[32px] leading-[1.4]  tracking-[-0.3px];
   }
 
-  .text-preset-mood {
-    @apply font-bold text-[28px] leading-[1.4]  tracking-[-0.3px]
-          md:text-[32px];
+  .text-preset-hours {
+    @apply font-bold text-[32px] leading-[1.4] tracking-[-0.3px];
   }
 
   .text-preset-feeling {
@@ -138,8 +147,13 @@ dialog::backdrop {
     @apply font-normal text-[12px] leading-[1.1] tracking-[0px];
   }
 
-  .text-preset-hours {
-    @apply font-bold text-[32px] leading-[1.4] tracking-[-0.3px];
+  .text-preset-a {
+    @apply font-bold text-[32px] md:text-[40px] leading-[1.4];
+  }
+
+  .text-preset-mood {
+    @apply font-bold text-[28px] leading-[1.4]  tracking-[-0.3px]
+          md:text-[32px];
   }
 
   .scrollbar-horizontal::-webkit-scrollbar {

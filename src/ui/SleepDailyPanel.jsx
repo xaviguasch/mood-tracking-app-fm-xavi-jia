@@ -8,7 +8,7 @@ function SleepDailyPanel({ sleepHours }) {
         <img src={sleepIcon} alt="" />
         <p className="text-preset-6 text-light-grey-text">Sleep</p>
       </div>
-      <p className="text-preset-hours">{sleepHours} hours</p>
+      <p className="text-preset-3">{sleepHours} hours</p>
     </div>
   );
 }

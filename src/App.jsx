@@ -20,7 +20,7 @@ function App() {
     const foundUser = data.users.find((user) => user.id === currentUserId);
 
     const entries = data.moodEntries.filter(
-      (entry) => entry.userId === currentUserId,
+      (entry) => entry.userId === currentUserId
     );
 
     setCurrentUser(foundUser);
@@ -44,7 +44,7 @@ function App() {
           moodQuotes={quotes}
         />
       </div>
-      <div className="flex flex-col gap-8 xl:flex-row">
+      <div className="flex flex-col gap-8 lg:flex-row">
         <Averages moodEntries={userEntries} />
         <Trends moodEntries={userEntries} />
       </div>
