@@ -85,7 +85,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
       JSON.stringify({
         ...moodApp,
         moodEntries: updatedEntries,
-      }),
+      })
     );
 
     onAddEntry(newEntry);
@@ -116,7 +116,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
   // console.log(JSON.parse(localStorage.getItem("moodApp")));
 
   const stepBarClasses = (index) =>
-    `h-1.5 w-29.5 rounded-2xl ${
+    `h-1.5 flex-1 min-w-[60px] rounded-2xl ${
       index <= step ? "bg-bright-blue-btn" : "bg-[var(--color-blue-200)]"
     }`;
 
@@ -129,7 +129,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
         if (e.target === e.currentTarget) handleClose();
       }}
     >
-      <div className="relative w-full max-w-[600px] mx-5 md:mx-0  mt-20 px-5 md:px-10 py-8 md:py-12 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)] shadow-lg">
+      <div className="relative w-full max-w-[600px] mx-5 md:mx-0 mt-20 px-5 md:px-10 py-10 md:py-12 rounded-2xl bg-[linear-gradient(180deg,#F5F5FF_73%,#E0E0FF_100%)] shadow-lg">
         {" "}
         <button
           onClick={handleClose}
@@ -141,7 +141,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
         <form className="flex flex-col gap-8">
           <h2 className="text-preset-a text-dark-text">Log your mood</h2>
 
-          <div className="w-full flex justify-between gap-4">
+          <div className="w-full flex flex-wrap gap-4">
             {Array.from({ length: totalSteps }).map((_, index) => (
               <span key={index} className={stepBarClasses(index)} />
             ))}
