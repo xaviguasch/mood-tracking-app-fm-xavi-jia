@@ -37,10 +37,15 @@ function SleepHoursStep({ onSubmitStep }) {
             key={option.label}
             className={`flex items-center gap-2.5 w-full h-15.5 px-6 bg-white-text rounded-xl 
               cursor-pointer border-2 
-              ${localSleepHours === option.label ? "border-[var(--color-blue-600)]" : "border-translucid-line"}
+              ${
+                localSleepHours === option.label
+                  ? "border-[var(--color-blue-600)]"
+                  : "border-translucid-line focus-within:border-(--color-blue-600)"
+              }
              `}
           >
             <input
+              className="custom-radio"
               type="radio"
               name="sleepHours"
               value={option.value}
@@ -65,7 +70,7 @@ function SleepHoursStep({ onSubmitStep }) {
       <button
         type="submit"
         onClick={handleContinue}
-        className=" text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text"
+        className=" text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text focus-style"
       >
         Submit
       </button>

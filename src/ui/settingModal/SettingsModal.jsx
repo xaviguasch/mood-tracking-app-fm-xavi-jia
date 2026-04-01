@@ -40,7 +40,7 @@ function SettingsModal({ user, isModalOpen, onClose }) {
       <div className="relative w-full max-w-[600px] mx-5 md:mx-0  mt-20 px-5 md:px-10 py-10 md:py-12 rounded-2xl bg-white shadow-lg flex flex-col gap-6 md:gap-8 text-dark-text">
         <button
           onClick={handleClose}
-          className="absolute right-6 top-6 cursor-pointer"
+          className="absolute right-6 top-6 cursor-pointer focus-style"
         >
           <img
             src={closeIcon}
@@ -63,7 +63,7 @@ function SettingsModal({ user, isModalOpen, onClose }) {
               id="name"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
-              className="h-12.5 border border-(--color-neutral-600) rounded-lg px-4"
+              className="h-12.5 border border-(--color-neutral-600) rounded-lg px-4 focus-style"
             />
           </div>
 
@@ -82,14 +82,14 @@ function SettingsModal({ user, isModalOpen, onClose }) {
                 </p>
               </div>
 
-              <button className="text-preset-6 border border-(--color-neutral-300) py-2 px-4 rounded-lg">
+              <button className="text-preset-6 border border-(--color-neutral-300) py-2 px-4 rounded-lg focus-style">
                 Upload
               </button>
             </div>
           </div>
         </div>
 
-        <button className="text-preset-5 text-white-text bg-bright-blue-btn h-15 rounded-xl">
+        <button className="text-preset-5 text-white-text bg-bright-blue-btn h-15 rounded-xl focus-style">
           Save changes
         </button>
       </div>

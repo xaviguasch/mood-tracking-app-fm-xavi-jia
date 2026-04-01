@@ -58,7 +58,7 @@ function Hero({ onAddEntry, currentUser, userEntries, moodQuotes }) {
         ) : (
           <button
             onClick={() => setIsopen(true)}
-            className="text-preset-5 text-white-text bg-bright-blue-btn mb-12 md:mb-16 px-8 py-4 rounded-[10px] cursor-pointer"
+            className="text-preset-5 text-white-text bg-bright-blue-btn mb-12 md:mb-16 px-8 py-4 rounded-[10px] cursor-pointer focus-style"
           >
             Log today's mood
           </button>

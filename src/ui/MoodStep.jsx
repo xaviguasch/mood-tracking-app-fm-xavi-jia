@@ -15,8 +15,8 @@ const moods = [
   { type: "Very Sad", value: -2, icon: verySadIcon },
 ];
 
-function MoodStep({ selectedMood, setSelectedMood, onNext }) {
-  const [localMood, setLocalMood] = useState(selectedMood);
+function MoodStep({ setSelectedMood, onNext }) {
+  const [localMood, setLocalMood] = useState(null);
   const [error, setError] = useState("");
 
   const handleContinue = () => {
@@ -35,34 +35,47 @@ function MoodStep({ selectedMood, setSelectedMood, onNext }) {
       <h3 className="text-preset-mood">How was your mood today?</h3>
 
       <div className="flex flex-col gap-2.5 w-full">
-        {moods.map((mood) => (
-          <label
-            key={mood.type}
-            className={`flex items-center justify-between w-full h-15.5 px-6 bg-white-text rounded-xl cursor-pointer border-2 
+        {moods.map((mood) => {
+          const isSelected = localMood === mood.value;
+
+          const handleSelect = () => {
+            setLocalMood(mood.value);
+            setError("");
+          };
+
+          return (
+            <label
+              key={mood.type}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  handleSelect();
+                }
+              }}
+              className={`flex items-center justify-between w-full h-15.5 px-6 bg-white-text rounded-xl cursor-pointer border-2 transition-all outline-none
               ${
-                localMood === mood.type
-                  ? "border-[var(--color-blue-600)]"
-                  : "border-translucid-line"
+                isSelected
+                  ? "border-(--color-blue-600)"
+                  : "border-translucid-line focus-within:border-(--color-blue-600)"
               }`}
-          >
-            <div className="flex items-center gap-2.5">
-              <input
-                type="radio"
-                name="mood"
-                value={mood.value}
-                checked={localMood === mood.value}
-                onChange={() => {
-                  setLocalMood(mood.value);
-                  setError("");
-                }}
-              />
+            >
+              <div className="flex items-center gap-2.5">
+                <input
+                  type="radio"
+                  name="mood"
+                  value={mood.value}
+                  checked={isSelected}
+                  onChange={handleSelect}
+                  className="custom-radio"
+                />
 
-              <span className="text-preset-5">{mood.type}</span>
-            </div>
+                <span className="text-preset-5">{mood.type}</span>
+              </div>
 
-            <img src={mood.icon} alt={mood.type} className="w-9.5 h-9.5" />
-          </label>
-        ))}
+              <img src={mood.icon} alt={mood.type} className="w-9.5 h-9.5" />
+            </label>
+          );
+        })}
       </div>
 
       {error && (
@@ -75,7 +88,7 @@ function MoodStep({ selectedMood, setSelectedMood, onNext }) {
       <button
         type="button"
         onClick={handleContinue}
-        className="text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text"
+        className="text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text focus-style"
       >
         Continue
       </button>

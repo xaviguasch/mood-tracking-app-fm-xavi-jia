@@ -177,4 +177,21 @@ dialog:not([open]) {
   .average-bg-pattern {
     @apply absolute -top-[25%] -right-[55%];
   }
+
+  .focus-style {
+    @apply transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-blue-600) focus-visible:ring-offset-2;
+  }
+
+  .custom-radio {
+    @apply appearance-none w-5 h-5 border-2 border-[var(--color-blue-200)] rounded-full 
+           relative transition-all cursor-pointer bg-transparent outline-none;
+  }
+
+  .custom-radio:checked {
+    @apply border-[5px] border-[var(--color-blue-600)];
+  }
+
+  .custom-radio::before {
+    display: none;
+  }
 }

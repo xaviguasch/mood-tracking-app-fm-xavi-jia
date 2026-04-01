@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import infoCircleIcon from "../assets/images/icon-info-circle.svg";
 
-function DescriptionStep({ selectedDesc, setSelectedDesc, onNext }) {
-  const [text, setText] = useState(selectedDesc || "");
+function DescriptionStep({ setSelectedDesc, onNext }) {
+  const [text, setText] = useState("");
   const [error, setError] = useState("");
 
   const maxLength = 150;
@@ -35,7 +35,7 @@ function DescriptionStep({ selectedDesc, setSelectedDesc, onNext }) {
         maxLength={maxLength}
         placeholder="Today, I felt..."
         className="p-3.5 bg-trends-background w-full border-[1.5px] border-[var(--color-neutral-300)] 
-        rounded-xl text-[18px] text-dark-text placeholder-preset-6-italic"
+        rounded-xl text-[18px] text-dark-text placeholder-preset-6-italic focus-style"
       />
 
       <p className="text-preset-8 text-right text-light-grey-text mt-0.5 mb-8">
@@ -52,7 +52,7 @@ function DescriptionStep({ selectedDesc, setSelectedDesc, onNext }) {
       <button
         type="button"
         onClick={handleContinue}
-        className=" text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text"
+        className=" text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text focus-style"
       >
         Continue
       </button>

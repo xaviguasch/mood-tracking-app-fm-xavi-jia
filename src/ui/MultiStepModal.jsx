@@ -16,7 +16,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
   });
   const [resetKey, setResetKey] = useState(0);
 
-  // console.log(formData);
+  console.log(formData);
 
   const dialogRef = useRef();
 
@@ -85,7 +85,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
       JSON.stringify({
         ...moodApp,
         moodEntries: updatedEntries,
-      })
+      }),
     );
 
     onAddEntry(newEntry);
@@ -133,7 +133,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
         {" "}
         <button
           onClick={handleClose}
-          className="absolute right-6 top-6"
+          className="absolute right-6 top-6 bg-transparent focus-style"
           aria-label="Close modal"
         >
           <img src={closeIcon} alt="Close" />
@@ -150,7 +150,6 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
           {step === 0 && (
             <MoodStep
               key={resetKey}
-              selectedMood={formData.mood}
               setSelectedMood={(mood) =>
                 setFormData((prev) => ({ ...prev, mood }))
               }
@@ -160,7 +159,6 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
 
           {step === 1 && (
             <FeelingStep
-              selectedFeelings={formData.feelings}
               setSelectedFeelings={(feelings) =>
                 setFormData((prev) => ({ ...prev, feelings }))
               }
@@ -179,7 +177,6 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
           )}
           {step === 3 && (
             <SleepHoursStep
-              selectedHours={formData.sleepHours}
               setSelectedHours={(hours) =>
                 setFormData((prev) => ({ ...prev, sleepHours: hours }))
               }

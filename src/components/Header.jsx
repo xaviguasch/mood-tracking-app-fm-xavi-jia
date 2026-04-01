@@ -41,7 +41,7 @@ function Header({ currentUser }) {
         <div ref={dropdownRef} className="relative">
           <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className=" flex items-center gap-2.5 cursor-pointer"
+            className="flex items-center gap-2.5 cursor-pointer focus-style"
           >
             <img
               src={currentUser?.avatar}
