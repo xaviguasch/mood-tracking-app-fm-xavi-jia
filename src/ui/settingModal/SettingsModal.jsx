@@ -63,7 +63,7 @@ function SettingsModal({ user, isModalOpen, onClose }) {
               id="name"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
-              className="h-12.5 border border-(--color-neutral-600) rounded-lg px-4 focus-style"
+              className="h-12.5 border border-(--color-neutral-600) rounded-lg px-4 focus-style hover:cursor-pointer"
             />
           </div>
 

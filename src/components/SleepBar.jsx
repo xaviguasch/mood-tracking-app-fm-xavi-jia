@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import veryHappyWhiteIcon from "../assets/images/icon-very-happy-white.svg";
 import happyWhiteIcon from "../assets/images/icon-happy-white.svg";
@@ -14,7 +14,6 @@ import verySadColorIcon from "../assets/images/icon-very-sad-color.svg";
 
 const LEVEL_HEIGHT = 56;
 
-// Map mood values to icons
 const moodWhiteIcons = {
   "-2": verySadWhiteIcon,
   "-1": sadWhiteIcon,
@@ -31,7 +30,6 @@ const moodColorIcons = {
   2: veryHappyColorIcon,
 };
 
-// Map mood values to labels
 const moodLabels = {
   "-2": "Very Sad",
   "-1": "Sad",
@@ -43,9 +41,40 @@ const moodLabels = {
 function SleepBar({ entry, containerRef }) {
   const [isHovered, setIsHovered] = useState(false);
   const [popoverSide, setPopoverSide] = useState("right");
+  const [isHoverSupported, setIsHoverSupported] = useState(false);
+
   const barRef = useRef();
 
-  // Calculate bar height based on sleep hours
+  // Detect hover capability
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover)");
+
+    const updateHoverSupport = () => {
+      setIsHoverSupported(mediaQuery.matches);
+    };
+
+    updateHoverSupport();
+    mediaQuery.addEventListener("change", updateHoverSupport);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateHoverSupport);
+    };
+  }, []);
+
+  // Close tooltip when clicking outside (mobile UX)
+  useEffect(() => {
+    if (isHoverSupported) return;
+
+    function handleClickOutside(e) {
+      if (barRef.current && !barRef.current.contains(e.target)) {
+        setIsHovered(false);
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [isHoverSupported]);
+
   const getHeight = (hours) => {
     if (hours >= 9) return LEVEL_HEIGHT * 5;
     if (hours >= 7) return LEVEL_HEIGHT * 4;
@@ -54,7 +83,6 @@ function SleepBar({ entry, containerRef }) {
     return LEVEL_HEIGHT;
   };
 
-  // Determine bar color based on mood
   const getColor = (mood) => {
     if (mood === 2) return "bg-light-amber";
     if (mood === 1) return "bg-light-green";
@@ -65,6 +93,8 @@ function SleepBar({ entry, containerRef }) {
   };
 
   function handleMouseEnter() {
+    if (!isHoverSupported) return;
+
     if (!isHovered && barRef.current && containerRef.current) {
       const barRect = barRef.current.getBoundingClientRect();
       const containerRect = containerRef.current.getBoundingClientRect();
@@ -72,13 +102,32 @@ function SleepBar({ entry, containerRef }) {
       const spaceOnRight = containerRect.right - barRect.right;
       const containerWidth = 180;
 
-      if (spaceOnRight < containerWidth) {
-        setPopoverSide("left");
-      } else {
-        setPopoverSide("right");
-      }
+      setPopoverSide(spaceOnRight < containerWidth ? "left" : "right");
     }
-    setIsHovered(!isHovered);
+
+    setIsHovered(true);
+  }
+
+  function handleMouseLeave() {
+    if (!isHoverSupported) return;
+    setIsHovered(false);
+  }
+
+  // Mobile click handler
+  function handleClick() {
+    if (isHoverSupported) return;
+
+    if (!isHovered && barRef.current && containerRef.current) {
+      const barRect = barRef.current.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
+
+      const spaceOnRight = containerRect.right - barRect.right;
+      const containerWidth = 180;
+
+      setPopoverSide(spaceOnRight < containerWidth ? "left" : "right");
+    }
+
+    setIsHovered((prev) => !prev);
   }
 
   return (
@@ -86,16 +135,21 @@ function SleepBar({ entry, containerRef }) {
       ref={barRef}
       className="relative flex flex-col items-center"
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick} // mobile only behavior inside handler
     >
       {isHovered && entry && (
         <div
           className={`absolute bottom-2
-          ${popoverSide === "left" ? "right-0 translate-x-[-25%]" : "left-0 translate-x-[25%]"}
+          ${
+            popoverSide === "left"
+              ? "right-0 translate-x-[-25%]"
+              : "left-0 translate-x-[25%]"
+          }
           w-[175px] p-3 bg-white border
-        border-translucid-line rounded-[10px] z-50 shadow-md flex flex-col gap-3.5`}
+          border-translucid-line rounded-[10px] z-50 shadow-md flex flex-col gap-3.5`}
         >
-          <div className="flex flex-col justify-start items-start gap-1.5">
+          <div className="flex flex-col gap-1.5">
             <span className="text-preset-8 text-light-grey-text">Mood</span>
             <span className="text-preset-7 text-dark-text flex items-center gap-1">
               <img
@@ -107,14 +161,14 @@ function SleepBar({ entry, containerRef }) {
             </span>
           </div>
 
-          <div className="flex flex-col justify-start items-start gap-1.5">
+          <div className="flex flex-col gap-1.5">
             <span className="text-preset-8 text-light-grey-text">Sleep</span>
             <span className="text-preset-7 text-dark-text">
               {entry.sleepHours}+ hours
             </span>
           </div>
 
-          <div className="flex flex-col justify-start items-start gap-1.5">
+          <div className="flex flex-col gap-1.5">
             <span className="text-preset-8 text-light-grey-text">
               Reflection
             </span>
@@ -123,7 +177,7 @@ function SleepBar({ entry, containerRef }) {
             </span>
           </div>
 
-          <div className="flex flex-col justify-start items-start gap-1.5">
+          <div className="flex flex-col gap-1.5">
             <span className="text-preset-8 text-light-grey-text">Tags</span>
             <span className="text-preset-9 text-dark-text">
               {entry.feelings.join(", ")}
@@ -135,7 +189,7 @@ function SleepBar({ entry, containerRef }) {
       <div
         style={{ height: `${getHeight(entry.sleepHours)}px` }}
         className={`w-10 rounded-full cursor-pointer flex items-start justify-center pt-1.5 text-xl ${getColor(
-          entry.mood,
+          entry.mood
         )}`}
       >
         <img

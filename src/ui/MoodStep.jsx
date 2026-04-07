@@ -88,7 +88,7 @@ function MoodStep({ setSelectedMood, onNext }) {
       <button
         type="button"
         onClick={handleContinue}
-        className="text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text focus-style"
+        className="text-preset-4 w-full h-16.5 bg-bright-blue-btn rounded-xl text-white-text focus-style cursor-pointer"
       >
         Continue
       </button>
