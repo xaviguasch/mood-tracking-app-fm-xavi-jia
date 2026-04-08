@@ -141,7 +141,7 @@ function MultiStepModal({ isOpen, onClose, onAddEntry }) {
         <form className="flex flex-col gap-8">
           <h2 className="text-preset-a text-dark-text">Log your mood</h2>
 
-          <div className="w-full flex flex-nowrap gap-4">
+          <div className="w-full flex flex-nowrap gap-2 md:gap-4">
             {Array.from({ length: totalSteps }).map((_, index) => (
               <span key={index} className={stepBarClasses(index)} />
             ))}
