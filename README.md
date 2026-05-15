@@ -1,6 +1,6 @@
 # Mood Tracking App 📊😊
 
-A fully interactive health and mood tracking application that allows users to monitor multiple data points over time, visualize trends, and gain meaningful insights through built-in statistics and charts.
+A fully interactive health and mood tracking application that allows users to monitor multiple data points over time, visualize trends, and gain meaningful insights through built-in statistics and charts, made alongside Jia He.
 
 🔗 **Live Demo:** https://mood-tracking-app-fm-xavi-jia.vercel.app/  
 
@@ -52,7 +52,7 @@ This collaboration was a core part of the project and helped strengthen both tec
 - **Tailwind CSS** – Utility-first styling system  
 - **JavaScript (ES6+)**
 - **Local Storage API** – Persistent client-side data storage  
-- **Data Visualization Tools** – Interactive charts and progress tracking  
+- **Data Visualization Tools** – Interactive charts and progress tracking, no libraries used. All custom made.  
 
 ---
 
