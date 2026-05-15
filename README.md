@@ -1,17 +1,104 @@
-# React + Vite
+# Mood Tracking App 📊😊
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully interactive health and mood tracking application that allows users to monitor multiple data points over time, visualize trends, and gain meaningful insights through built-in statistics and charts.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** https://mood-tracking-app-fm-xavi-jia.vercel.app/  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🖼️ App Preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<p align="center">
+  <img src="https://i.ibb.co/kkMFJNR/mood-tracking-app-fm-xavi-jia-vercel-app-1.png" alt="Mood Tracking App Screenshot 1" width="80%" />
+</p>
 
-## Expanding the ESLint configuration
+<p align="center">
+  <img src="https://i.ibb.co/tMKwQG7V/mood-tracking-app-fm-xavi-jia-vercel-app.png" alt="Mood Tracking App Screenshot 2" width="80%" />
+</p>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# mood-tracking-app-fm-xavi-jia
+---
+
+## ✨ Overview
+
+This application is designed to help users track mood and health-related metrics over time in an intuitive and visual way. Users can log multiple data points, view historical progress, and explore patterns through interactive charts and statistics.
+
+The focus of the project is simplicity, usability, and meaningful data visualization.
+
+---
+
+## 🤝 Collaboration
+
+This project was built as a **collaborative effort between Xavi Guasch and Jia He**.
+
+  🔗 GitHub: [Xavi Guasch](https://github.com/xaviguasch)  
+
+  🔗 GitHub: [Jia He](https://github.com/JiaHe35354)  
+
+We worked closely throughout the entire development process, following a structured, ticket-based workflow similar to a real-world agile team environment. Responsibilities and decision-making were shared equally, including:
+
+- Feature planning and task breakdown
+- UI/UX decisions and design consistency
+- Component architecture in React
+- Iterative development with continuous communication
+- Code review and problem-solving as a team
+
+This collaboration was a core part of the project and helped strengthen both technical execution and teamwork skills in a production-like environment.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** – Component-based frontend architecture  
+- **Tailwind CSS** – Utility-first styling system  
+- **JavaScript (ES6+)**
+- **Local Storage API** – Persistent client-side data storage  
+- **Data Visualization Tools** – Interactive charts and progress tracking  
+
+---
+
+## 📊 Features
+
+- Daily mood and health tracking inputs  
+- Persistent storage using browser local storage  
+- Interactive charts for trend visualization  
+- Historical data comparison  
+- Clean, responsive UI with Tailwind CSS  
+- Lightweight, fast, and fully client-side application  
+
+---
+
+## 🎯 Purpose
+
+The goal of this project was to build a practical wellness tracking tool while improving:
+
+- React development skills  
+- Data visualization and state handling  
+- Real-world team collaboration workflows  
+- Translating user data into meaningful insights  
+
+---
+
+## 🧠 Key Learnings
+
+- Designing scalable React component structures  
+- Managing persistent state with local storage  
+- Building interactive data visualizations  
+- Working in a structured, ticket-based collaborative workflow  
+- Strengthening communication and shared decision-making in a team environment  
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/xaviguasch/mood-tracking-app-fm-xavi-jia.git
+
+# Navigate into the project
+cd mood-tracking-app-fm-xavi-jia
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
